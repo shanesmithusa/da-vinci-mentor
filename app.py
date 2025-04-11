@@ -23,8 +23,7 @@ if uploaded_file:
     splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=50)
     chunks = splitter.split_documents(docs)
     db = FAISS.from_documents(chunks, OpenAIEmbeddings())
-
-     qa_chain = RetrievalQA.from_chain_type(
+    qa_chain = RetrievalQA.from_chain_type(
         llm=OpenAI(temperature=0.3, model_name="gpt-3.5-turbo"),
         retriever=db.as_retriever()
     )
