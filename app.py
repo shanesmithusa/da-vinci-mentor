@@ -4,7 +4,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
-from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 
 st.set_page_config(page_title="Leonardo da Vinci Mentor", layout="centered")
 st.title("🎨 Chat with Leonardo da Vinci")
@@ -24,7 +24,7 @@ if uploaded_file:
     chunks = splitter.split_documents(docs)
     db = FAISS.from_documents(chunks, OpenAIEmbeddings())
     qa_chain = RetrievalQA.from_chain_type(
-        llm=OpenAI(temperature=0.3, model_name="gpt-3.5-turbo"),
+        llm=ChatOpenAI(temperature=0.3, model_name="gpt-3.5-turbo"),
         retriever=db.as_retriever()
     )
 
