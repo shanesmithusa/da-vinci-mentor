@@ -26,8 +26,7 @@ if uploaded_file:
 
    qa_chain = RetrievalQA.from_chain_type(
     llm=OpenAI(temperature=0.3, model_name="gpt-3.5-turbo"),
-    retriever=db.as_retriever()
-)
+    retriever=db.as_retriever(),
 
 
     query = st.text_input("Ask Leonardo a question:")
