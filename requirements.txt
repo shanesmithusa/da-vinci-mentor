@@ -1,7 +1,7 @@
-openai==1.2.3
-streamlit==1.29.0
-faiss-cpu==1.7.4
-tiktoken==0.5.1
-langchain==0.1.0
-langchain-community==0.0.11
+streamlit
+openai
+faiss-cpu
+tiktoken
+langchain==0.0.334
+
 
