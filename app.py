@@ -20,7 +20,7 @@ if uploaded_file:
     loader = TextLoader("temp.txt")
     docs = loader.load()
 
-    splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=100)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=50)
     chunks = splitter.split_documents(docs)
     db = FAISS.from_documents(chunks, OpenAIEmbeddings())
 
@@ -31,4 +31,5 @@ if uploaded_file:
     if query:
         response = qa_chain.run(query)
         st.markdown(f"**Da Vinci:** {response}")
+
 
